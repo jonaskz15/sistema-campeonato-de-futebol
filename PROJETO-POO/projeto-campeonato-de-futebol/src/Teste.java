@@ -48,20 +48,20 @@ class Campeonato {
 
     private void jogarPartida(Clube time1, Clube time2) {
         Random random = new Random();
-        int golsTime1 = random.nextInt(6);
-        int golsTime2 = random.nextInt(6);
+        int pontosTime1 = random.nextInt(6);
+        int pontosTime2 = random.nextInt(6);
 
-        System.out.println(time1.nome + " " + golsTime1 + " x " + golsTime2 + " " + time2.nome);
+        System.out.println(time1.nome + " " + pontosTime1 + " x " + pontosTime2 + " " + time2.nome);
 
-        if (golsTime1 > golsTime2) {
-            time1.ganhar(golsTime1, golsTime2);
-            time2.perder(golsTime2, golsTime1);
-        } else if (golsTime1 < golsTime2) {
-            time1.perder(golsTime1, golsTime2);
-            time2.ganhar(golsTime2, golsTime1);
+        if (pontosTime1 > pontosTime2) {
+            time1.ganhar(pontosTime1, pontosTime2);
+            time2.perder(pontosTime2, pontosTime1);
+        } else if (pontosTime1 < pontosTime2) {
+            time1.perder(pontosTime1, pontosTime2);
+            time2.ganhar(pontosTime2, pontosTime1);
         } else {
-            time1.empatar(golsTime1, golsTime2);
-            time2.empatar(golsTime2, golsTime1);
+            time1.empatar(pontosTime1, pontosTime2);
+            time2.empatar(pontosTime2, pontosTime1);
         }
     }
 

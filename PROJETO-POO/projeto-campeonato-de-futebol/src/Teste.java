@@ -17,16 +17,23 @@ class Clube {
 
     void ganhar(int pontosGanhos, int pontosSofridos) {
         this.pontos += 3;
-        this.saldoGols += (pontosGanhos - pontosSofridos);
+        atualizarSaldoGols(pontosGanhos, pontosSofridos);
     }
 
     void empatar(int pontosGanhos, int pontosSofridos) {
         this.pontos += 1;
-        this.saldoGols += (pontosGanhos - pontosSofridos);
+        atualizarSaldoGols(pontosGanhos, pontosSofridos);
     }
 
     void perder(int pontosGanhos, int pontosSofridos) {
+        atualizarSaldoGols(pontosGanhos, pontosSofridos);
+    }
+
+    private void atualizarSaldoGols(int pontosGanhos, int pontosSofridos) {
         this.saldoGols += (pontosGanhos - pontosSofridos);
+        if (this.saldoGols < 0) {
+            this.saldoGols = 0; // Impede que o saldo de gols seja negativo
+        }
     }
 }
 
@@ -40,8 +47,8 @@ class Campeonato {
     void jogarCampeonato() {
         for (int i = 0; i < clubes.size(); i++) {
             for (int j = i + 1; j < clubes.size(); j++) {
-                jogarPartida(clubes.get(i), clubes.get(j)); 
-                jogarPartida(clubes.get(j), clubes.get(i)); 
+                jogarPartida(clubes.get(i), clubes.get(j));
+                jogarPartida(clubes.get(j), clubes.get(i));
             }
         }
     }
@@ -89,7 +96,7 @@ class Campeonato {
     }
 
     Clube getCampeao() {
-        return clubes.get(0); 
+        return clubes.get(0);
     }
 }
 
